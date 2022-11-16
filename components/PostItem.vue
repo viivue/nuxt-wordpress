@@ -10,12 +10,9 @@
 </template>
 
 <script>
-import {getURL} from "../includes/helpers";
-
 export default {
   name: "PostItem",
   props: {
-    media: {},
     post: {
       type: Object,
       required: true
@@ -26,7 +23,8 @@ export default {
       return this.post._embedded['wp:featuredmedia']['0'];
     },
     link(){
-      return getURL(this.post.link)
+      return `/post/${this.post.id}`;
+      //return getURL(this.post.link)
     }
   }
 }
