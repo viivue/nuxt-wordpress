@@ -1,5 +1,5 @@
 <template>
-  <ul class="d-flex fw-wrap" style="gap:20px;">
+  <ul class="post-list flex-grid-template" style="gap:20px;">
     <PostItem v-for="post in posts" :post="post" :key="post.id"/>
   </ul>
 </template>
@@ -29,5 +29,5 @@ export default {
 </script>
 
 <style scoped>
-
+.post-list {max-width:1024px;}
 </style>

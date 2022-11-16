@@ -33,5 +33,4 @@ export default {
 </script>
 
 <style scoped>
-li {width:20%;}
 </style>
