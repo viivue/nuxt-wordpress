@@ -6,6 +6,7 @@
 
 <script>
 import axios from "axios";
+import {useRuntimeConfig} from "nuxt/app";
 
 export default {
   name: "post",
@@ -15,11 +16,12 @@ export default {
     }
   },
   mounted(){
+    const runtimeConfig = useRuntimeConfig();
+
     axios.get(
-        `https://dev.mochisandbox.com/wordpress-vue/wp-json/wp/v2/posts`
+        `${runtimeConfig.public.api}/posts`
     ).then(response => {
-      this.posts = response.data
-      console.table(this.posts)
+      this.posts = response.data;
     });
   }
 }
