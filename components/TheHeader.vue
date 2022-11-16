@@ -27,11 +27,9 @@ export default {
     axios.get(
         `${runtimeConfig.public.apiBaseJson}/custom/menu/location=main-menu`
     ).then(response => {
-      console.log(response.data)
       for(const item of response.data){
         this.menuItems.push(new MenuItem(item));
       }
-      console.log(this.menuItems)
     });
   }
 }

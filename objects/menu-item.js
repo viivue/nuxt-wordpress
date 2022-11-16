@@ -8,7 +8,7 @@ export class MenuItem{
             url: '',
             ...config
         };
-        console.log(data)
+
         this.ID = data.ID;
         this.title = data.title;
         this.url = getURL(data.url);
