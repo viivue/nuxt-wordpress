@@ -34,10 +34,9 @@ export default {
     const runtimeConfig = useRuntimeConfig();
 
     axios.get(
-        `${runtimeConfig.public.api}/posts?filter[p]=${id}&_embed`
+        `${runtimeConfig.public.api}/posts/${id}/?_embed`
     ).then(response => {
-      //this.response = response.data;
-      this.post = response.data[0];
+      this.post = response.data;
     });
   }
 }

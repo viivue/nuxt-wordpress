@@ -21,7 +21,6 @@ export default {
     axios.get(
         `${runtimeConfig.public.api}/posts?_embed`
     ).then(response => {
-      //this.response = response.data;
       this.posts = response.data;
     });
   }
