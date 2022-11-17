@@ -1,11 +1,11 @@
 <template>
   <li :data-id="post.id">
-    <a class="d-block" :href="link">
+    <nuxt-link class="d-block" :href="link">
       <img class="d-block w100 of-cover ar-1 thumbnail skeleton-bg" :src="featuredImage.source_url"
            :alt="featuredImage.title.rendered"/>
       <h3 class="title">{{ post.title.rendered }}</h3>
       <div class="excerpt" v-if="post.excerpt.rendered" v-html="post.excerpt.rendered"/>
-    </a>
+    </nuxt-link>
   </li>
 </template>
 

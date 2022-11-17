@@ -2,7 +2,7 @@
   <div>
     <ul>
       <li v-for="item in menuItems">
-        <a :href="item.url">{{ item.title }}</a>
+        <nuxt-link :href="item.url">{{ item.title }}</nuxt-link>
       </li>
     </ul>
   </div>

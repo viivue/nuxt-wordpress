@@ -11,6 +11,6 @@ export class MenuItem{
 
         this.ID = data.ID;
         this.title = data.title;
-        this.url = getURL(data.url);
+        this.url = getURL(data.url, '');
     }
 }
