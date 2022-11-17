@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import {useRoute, useRuntimeConfig} from "nuxt/app";
-import axios from "axios";
+import {useRoute} from "nuxt/app";
+import {usePostsStore} from "../../store/posts";
 
 export default {
   name: "[id]",
@@ -27,17 +27,12 @@ export default {
       if(this.post._embedded) return this.post._embedded['wp:featuredmedia']['0'];
     },
   },
-  mounted(){
+  async mounted(){
     const route = useRoute();
     const id = route.params.id;
 
-    const runtimeConfig = useRuntimeConfig();
-
-    axios.get(
-        `${runtimeConfig.public.api}/posts/${id}/?_embed`
-    ).then(response => {
-      this.post = response.data;
-    });
+    const post = await usePostsStore().fetchSinglePost(id);
+    this.post = post.data.value;
   }
 }
 </script>
