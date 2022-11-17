@@ -1,4 +1,4 @@
-import {getURL} from "~/includes/helpers";
+import {getURL} from "~/utils/helpers";
 
 export class MenuItem{
     constructor(config){
