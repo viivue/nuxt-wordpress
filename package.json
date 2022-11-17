@@ -11,7 +11,9 @@
     "nuxt": "3.0.0-rc.13"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.4.3",
     "@viivue/atomic-css": "^1.1.6",
-    "axios": "^1.1.3"
+    "axios": "^1.1.3",
+    "pinia": "^2.0.23"
   }
 }

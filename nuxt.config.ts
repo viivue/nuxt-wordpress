@@ -19,5 +19,12 @@ export default defineNuxtConfig({
      */
     css: [
         '@viivue/atomic-css'
+    ],
+
+    /**
+     * Modules
+     */
+    modules: [
+        '@pinia/nuxt'
     ]
 });

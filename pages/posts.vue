@@ -1,28 +1,22 @@
 <template>
   <ul class="post-list flex-grid-template" style="gap:20px;">
-    <PostItem v-for="post in posts" :post="post" :key="post.id"/>
+    <PostItem v-if="posts.length" v-for="post in posts" :post="post" :key="post.id"/>
   </ul>
 </template>
 
 <script>
-import axios from "axios";
-import {useRuntimeConfig} from "nuxt/app";
+import {usePostsStore} from "../store/posts";
 
 export default {
   name: "post",
   data(){
     return {
-      posts: {},
+      posts: [],
     }
   },
-  mounted(){
-    const runtimeConfig = useRuntimeConfig();
-
-    axios.get(
-        `${runtimeConfig.public.api}/posts?_embed`
-    ).then(response => {
-      this.posts = response.data;
-    });
+  async mounted(){
+    const {data: posts} = await usePostsStore().fetchPosts()
+    this.posts = posts.value;
   }
 }
 </script>
