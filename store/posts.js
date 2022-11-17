@@ -5,9 +5,6 @@ const runtimeConfig = useRuntimeConfig();
 
 export const usePostsStore = defineStore({
     id: 'post-store',
-    // state: () => ({
-    //     posts: []
-    // }),
     actions: {
         fetchPosts(){
             return useFetch(`${runtimeConfig.public.api}/posts?_embed`);

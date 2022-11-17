@@ -17,6 +17,11 @@ import {usePostsStore} from "../../store/posts";
 
 export default {
   name: "[id]",
+  head(){
+    return {
+      title: this.post ? this.post.title.rendered : 'Detail'
+    }
+  },
   data(){
     return {
       post: {}
@@ -28,12 +33,14 @@ export default {
     },
   },
   async mounted(){
+    console.log('mounted')
+
     const route = useRoute();
     const id = route.params.id;
 
     const post = await usePostsStore().fetchSinglePost(id);
     this.post = post.data.value;
-  }
+  },
 }
 </script>
 

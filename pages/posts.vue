@@ -9,6 +9,11 @@ import {usePostsStore} from "../store/posts";
 
 export default {
   name: "post",
+  head(){
+    return {
+      title: 'Posts'
+    }
+  },
   data(){
     return {
       posts: [],
