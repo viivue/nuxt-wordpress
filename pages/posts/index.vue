@@ -5,7 +5,8 @@
 </template>
 
 <script>
-import {usePostsStore} from "../store/posts";
+
+import {usePostsStore} from "../../store/posts";
 
 export default {
   name: "post",

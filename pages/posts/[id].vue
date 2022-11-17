@@ -34,15 +34,14 @@ export default {
   },
   async mounted(){
     console.log('mounted')
-
     const route = useRoute();
     const id = route.params.id;
-
     const post = await usePostsStore().fetchSinglePost(id);
     this.post = post.data.value;
   },
 }
 </script>
+
 
 <style scoped>
 

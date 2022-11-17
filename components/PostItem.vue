@@ -23,7 +23,7 @@ export default {
       return this.post._embedded['wp:featuredmedia']['0'];
     },
     link(){
-      return `/post/${this.post.id}`;
+      return `/posts/${this.post.id}`;
       //return getURL(this.post.link)
     }
   }
