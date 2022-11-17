@@ -1,8 +1,11 @@
 <template>
   <div>
+    <nuxt-link :to="{name:'index'}">LOGO</nuxt-link>
+  </div>
+  <div>
     <ul>
       <li v-for="item in menuItems">
-        <nuxt-link :href="item.url">{{ item.title }}</nuxt-link>
+        <nuxt-link :to="item.url">{{ item.title }}</nuxt-link>
       </li>
     </ul>
   </div>
