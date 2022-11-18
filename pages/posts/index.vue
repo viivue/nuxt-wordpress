@@ -1,11 +1,4 @@
-<template>
-  <ul class="post-list flex-grid-template" style="gap:20px;">
-    <PostItem v-if="posts.length" v-for="post in posts" :post="post" :key="post.id"/>
-  </ul>
-</template>
-
 <script>
-
 import {usePostsStore} from "../../store/posts";
 
 export default {
@@ -26,6 +19,14 @@ export default {
   }
 }
 </script>
+
+
+<template>
+  <ul v-if="posts && posts.length" class="post-list flex-grid-template" style="gap:20px;">
+    <PostItem v-for="post in posts" :post="post" :key="post.id"/>
+  </ul>
+</template>
+
 
 <style scoped>
 .post-list {max-width:1024px;}
