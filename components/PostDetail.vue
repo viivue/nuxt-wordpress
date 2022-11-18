@@ -1,34 +1,16 @@
-<script>
-import {usePostsStore} from "../store/posts";
+<script setup>
+import {useAsyncData, useRuntimeConfig} from "nuxt/app";
 
-export default {
-  name: "PostDetail",
-  data(){
-    return {
-      post: {
-        type: Object,
-      }
-    }
-  },
-  props: {
-    postId: {
-      type: String || Number,
-      required: true
-    },
-    postCat: {
-      type: String
-    }
-  },
-  computed: {
-    featuredImage(){
-      if(this.post._embedded) return this.post._embedded['wp:featuredmedia']['0'];
-    },
-  },
-  async mounted(){
-    const post = await usePostsStore().fetchSinglePost(this.postId);
-    this.post = post.data.value;
-  },
-}
+const props = defineProps(['postId', 'postCat']);
+const runtimeConfig = useRuntimeConfig();
+
+// post
+const {data: post} = await useAsyncData(props.postId, () => {
+  return $fetch(`${runtimeConfig.public.api}/posts/${props.postId}/?_embed`);
+});
+
+// featuredImage
+const featuredImage = computed(() => post.value._embedded ? post.value._embedded['wp:featuredmedia'][0] : {})
 </script>
 
 <template>
