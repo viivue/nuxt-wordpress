@@ -4,3 +4,9 @@ export function getURL(url, prefix = window.location.origin){
     const runtimeConfig = useRuntimeConfig();
     return url.replace(runtimeConfig.public.apiBase, prefix)
 }
+
+export function strippedHtml(string){
+    let regex = /(<([^>]+)>)/ig;
+
+    return string.replace(regex, "");
+}
