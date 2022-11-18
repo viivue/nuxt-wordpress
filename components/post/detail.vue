@@ -2,7 +2,8 @@
 /**
  * Component: <PostDetail/>
  */
-import {useFetch, useRuntimeConfig} from "nuxt/app";
+import {useFetch, useHead, useRuntimeConfig} from "nuxt/app";
+import {strippedHtml} from "../../utils/helpers";
 
 const runtimeConfig = useRuntimeConfig();
 
@@ -25,7 +26,15 @@ const {data: post} = await useFetch(
     `${runtimeConfig.public.api}/posts/${props.postId}/?_embed`,
     {
       key: props.postId,
-      pick: ['title', 'content', '_embedded'],
+      //pick: ['title', 'content', '_embedded'],
+      transform(post){
+        return {
+          title: post.title.rendered,
+          content: post.content.rendered,
+          excerpt: strippedHtml(post.excerpt.rendered),
+          featuredImage: post._embedded ? post._embedded['wp:featuredmedia'][0] : []
+        }
+      },
       onResponse({request, response}){
         if(!response.ok){
           navigateTo({name: '404'});
@@ -37,24 +46,32 @@ const {data: post} = await useFetch(
     }
 );
 
-// featuredImage
-const featuredImage = computed(() => post.value._embedded ? post.value._embedded['wp:featuredmedia'][0] : {});
+// head
+useHead({
+  title: post.value.title,
+  meta: [
+    {name: 'description', content: post.value.excerpt},
+    {property: 'og:description', content: post.value.excerpt},
+    {property: 'og:image', content: post.value.featuredImage.source_url},
+    {name: "twitter:card", content: 'summary_large_image'}
+  ]
+});
 </script>
 
 <template>
   <div>
 
     <h1 v-if="post.title">
-      <span>{{ post.title.rendered }}</span>
+      <span>{{ post.title }}</span>
       <span v-if="postCat"> - {{ postCat }}</span>
     </h1>
 
-    <img v-if="featuredImage"
+    <img v-if="post.featuredImage"
          class="d-block w100 of-cover ar-169 thumbnail skeleton-bg"
-         :src="featuredImage.source_url"
-         :alt="featuredImage.title.rendered"/>
+         :src="post.featuredImage.source_url"
+         :alt="post.featuredImage.title.rendered"/>
 
-    <div v-if="post.content" v-html="post.content.rendered"></div>
+    <div v-if="post.content" v-html="post.content"></div>
 
   </div>
 </template>

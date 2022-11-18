@@ -8,6 +8,11 @@ const runtimeConfig = useRuntimeConfig();
 const {data: posts} = await useAsyncData(() => {
   return $fetch(`${runtimeConfig.public.api}/posts?_embed`);
 });
+
+// head
+useHead({
+  title: 'Posts'
+});
 </script>
 
 <template>
