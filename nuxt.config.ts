@@ -13,6 +13,7 @@ export default defineNuxtConfig({
         }
     },
 
+
     /**
      * Head
      */
@@ -36,6 +37,7 @@ export default defineNuxtConfig({
     css: [
         '@viivue/atomic-css'
     ],
+
 
     /**
      * Modules

@@ -1,3 +1,15 @@
+<script setup>
+/**
+ * Component: <PostItem/>
+ */
+const props = defineProps(['post']);
+
+// featuredImage
+const featuredImage = computed(() => props.post._embedded ? props.post._embedded['wp:featuredmedia'][0] : {});
+const link = computed(() => `/posts/${props.post.id}`);
+</script>
+
+
 <template>
   <li :data-id="post.id">
     <nuxt-link class="d-block" :to="link">
@@ -8,27 +20,3 @@
     </nuxt-link>
   </li>
 </template>
-
-<script>
-export default {
-  name: "PostItem",
-  props: {
-    post: {
-      type: Object,
-      required: true
-    }
-  },
-  computed: {
-    featuredImage(){
-      return this.post._embedded['wp:featuredmedia']['0'];
-    },
-    link(){
-      return `/posts/${this.post.id}`;
-      //return getURL(this.post.link)
-    }
-  }
-}
-</script>
-
-<style scoped>
-</style>

@@ -1,8 +1,13 @@
 <script setup>
+/**
+ * Component: <PostDetail/>
+ */
 import {useAsyncData, useRuntimeConfig} from "nuxt/app";
 
-const props = defineProps(['postId', 'postCat']);
 const runtimeConfig = useRuntimeConfig();
+
+// props
+const props = defineProps(['postId', 'postCat']);
 
 // post
 const {data: post} = await useAsyncData(props.postId, () => {
@@ -10,7 +15,7 @@ const {data: post} = await useAsyncData(props.postId, () => {
 });
 
 // featuredImage
-const featuredImage = computed(() => post.value._embedded ? post.value._embedded['wp:featuredmedia'][0] : {})
+const featuredImage = computed(() => post.value._embedded ? post.value._embedded['wp:featuredmedia'][0] : {});
 </script>
 
 <template>
