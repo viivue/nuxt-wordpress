@@ -24,7 +24,7 @@ export default defineNuxtConfig({
             meta: [
                 // <meta name="description" content="My amazing site">
                 {name: 'description', content: 'My amazing site.'}
-            ],
+            ]
         },
 
         baseURL: '/nuxtwp'
