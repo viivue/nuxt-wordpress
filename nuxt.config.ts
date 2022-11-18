@@ -14,7 +14,7 @@ export default defineNuxtConfig({
 
 
     /**
-     * Head
+     * App
      */
     app: {
         head: {
@@ -25,7 +25,9 @@ export default defineNuxtConfig({
                 // <meta name="description" content="My amazing site">
                 {name: 'description', content: 'My amazing site.'}
             ],
-        }
+        },
+
+        baseURL: '/nuxtwp'
     },
 
 
@@ -43,5 +45,11 @@ export default defineNuxtConfig({
      */
     modules: [
         '@pinia/nuxt'
-    ]
+    ],
+
+
+    /**
+     * Router
+     */
+    routeRules: {}
 });
