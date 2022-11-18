@@ -1,6 +1,5 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-    ssr: false,
     components: true,
     runtimeConfig: {
         // The private keys which are only available server-side
