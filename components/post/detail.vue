@@ -2,10 +2,8 @@
 /**
  * Component: <PostDetail/>
  */
-import {useFetch, useHead, useRuntimeConfig} from "nuxt/app";
+import {useFetch, useHead} from "nuxt/app";
 import {strippedHtml} from "../../utils/helpers";
-
-const runtimeConfig = useRuntimeConfig();
 
 // props
 const props = defineProps(['postId', 'postCat']);
@@ -23,7 +21,7 @@ const props = defineProps(['postId', 'postCat']);
 
 // shorthand of useAsyncData()
 const {data: post} = await useFetch(
-    `${runtimeConfig.public.api}/posts/${props.postId}/?_embed`,
+    `/api/posts?id=${props.postId}`,
     {
       key: props.postId,
       //pick: ['title', 'content', '_embedded'],
