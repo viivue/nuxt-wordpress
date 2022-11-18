@@ -1,8 +1,3 @@
-<template>
-  <NuxtLayout>
-    <NuxtPage/>
-  </NuxtLayout>
-</template>
 <script setup>
 useHead({
   // as a string,
@@ -13,3 +8,9 @@ useHead({
   }
 })
 </script>
+
+<template>
+  <NuxtLayout>
+    <NuxtPage/>
+  </NuxtLayout>
+</template>

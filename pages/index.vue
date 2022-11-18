@@ -1,21 +1,11 @@
-<template>
-  <section>
-    <h1>Welcome to the homepage</h1>
-  </section>
-</template>
-
-
-<script>
-export default {
-  name: "index",
-  head(){
-    return {
-      title: 'Home Page 🤿'
-    }
-  }
-}
+<script setup>
+useHead({
+  title: 'Home Page 🤿'
+});
 </script>
 
-<style scoped>
-
-</style>
+<template>
+  <div>
+    <h1>Welcome to the homepage</h1>
+  </div>
+</template>
