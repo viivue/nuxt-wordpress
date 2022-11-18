@@ -25,7 +25,15 @@ const {data: post} = await useFetch(
     `${runtimeConfig.public.api}/posts/${props.postId}/?_embed`,
     {
       key: props.postId,
-      pick: ['title', 'content', '_embedded']
+      pick: ['title', 'content', '_embedded'],
+      onResponse({request, response}){
+        if(!response.ok){
+          navigateTo({name: '404'});
+          //showError({statusCode: 404, statusMessage: 'Page Not Found'});
+        }
+      },
+      onResponseError(ctx){
+      }
     }
 );
 
