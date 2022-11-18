@@ -10,9 +10,15 @@ const runtimeConfig = useRuntimeConfig();
 const props = defineProps(['postId', 'postCat']);
 
 // post
-const {data: post} = await useAsyncData(props.postId, () => {
-  return $fetch(`${runtimeConfig.public.api}/posts/${props.postId}/?_embed`);
-});
+const {data: post} = await useAsyncData(
+    props.postId,
+    () => {
+      return $fetch(`${runtimeConfig.public.api}/posts/${props.postId}/?_embed`);
+    },
+    {
+      pick: ['title', 'content', '_embedded']
+    }
+);
 
 // featuredImage
 const featuredImage = computed(() => post.value._embedded ? post.value._embedded['wp:featuredmedia'][0] : {});
