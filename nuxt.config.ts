@@ -36,7 +36,9 @@ export default defineNuxtConfig({
      * https://nuxtjs.org/docs/configuration-glossary/configuration-css
      */
     css: [
-        '@viivue/atomic-css'
+        '@viivue/atomic-css',
+        '@/assets/css/fonts.css',
+        '@/assets/css/style.scss',
     ],
 
 
@@ -44,12 +46,6 @@ export default defineNuxtConfig({
      * Modules
      */
     modules: [
-        '@pinia/nuxt'
+        //'@pinia/nuxt'
     ],
-
-
-    /**
-     * Router
-     */
-    routeRules: {}
 });
