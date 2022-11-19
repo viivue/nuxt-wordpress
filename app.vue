@@ -1,6 +1,8 @@
 <script setup>
 const {data: siteInfo} = await useFetch('/api/site-info');
 
+useState("siteInfo", () => siteInfo.value);
+
 useHead({
   // as a string,
   // where `%s` is replaced with the title

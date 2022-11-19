@@ -47,7 +47,6 @@ useHead({
   <div>
 
     <div v-if="page!==null">
-      <pre>{{ page }}</pre>
       <h1 v-if="page.title">
         <span>{{ page.title }}</span>
       </h1>

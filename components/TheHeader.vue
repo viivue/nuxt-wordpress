@@ -3,8 +3,9 @@
 
 
 <template>
-  <div>
-    <nuxt-link :to="{name:'index'}">LOGO</nuxt-link>
+  <div class="d-flex ai-center">
+
+    <Logo/>
 
     <MenuList :location="'main-menu'"/>
 
