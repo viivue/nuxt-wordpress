@@ -3,9 +3,9 @@
 
 
 <template>
-  <div class="d-flex ai-center">
+  <div class="site-header d-flex fd-column ai-center">
 
-    <Logo/>
+    <TheLogo/>
 
     <MenuList :location="'main-menu'"/>
 
@@ -14,5 +14,5 @@
 
 
 <style scoped>
-
+.site-header {padding:20px;}
 </style>
