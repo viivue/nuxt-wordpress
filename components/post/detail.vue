@@ -21,7 +21,7 @@ const props = defineProps(['postId', 'postCat']);
 
 // shorthand of useAsyncData()
 const {data: post} = await useFetch(
-    `/api/posts?id=${props.postId}`,
+    `/api/post?id=${props.postId}`,
     {
       key: props.postId,
       //pick: ['title', 'content', '_embedded'],

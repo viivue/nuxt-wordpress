@@ -3,7 +3,7 @@
  * Page Posts Listing
  */
 const {data: posts} = await useAsyncData(() => {
-  return $fetch(`/api/posts`);
+  return $fetch(`/api/post`);
 });
 
 // head

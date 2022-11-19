@@ -10,7 +10,7 @@ const props = defineProps(['pageSlug', 'pageId']);
 
 // fetch
 const {data: page} = await useFetch(
-    `/api/pages?id=${props.pageId}&slug=${props.pageSlug}`,
+    `/api/page?id=${props.pageId}&slug=${props.pageSlug}`,
     {
       key: `${props.pageId}-${props.pageSlug}`,
       transform(page){
