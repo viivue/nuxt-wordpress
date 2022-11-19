@@ -6,26 +6,15 @@ import {useFetch, useHead} from "nuxt/app";
 import {strippedHtml} from "../../utils/helpers";
 
 // props
-const props = defineProps(['postId', 'postCat']);
+const props = defineProps(['postSlug']);
 
-// post
-// const {data: post} = await useAsyncData(
-//     props.postId,
-//     () => {
-//       return $fetch(`${runtimeConfig.public.api}/posts/${props.postId}/?_embed`);
-//     },
-//     {
-//       pick: ['title', 'content', '_embedded']
-//     }
-// );
-
-// shorthand of useAsyncData()
+// fetch
 const {data: post} = await useFetch(
-    `/api/post?id=${props.postId}`,
+    `/api/post?slug=${props.postSlug}`,
     {
-      key: props.postId,
-      //pick: ['title', 'content', '_embedded'],
+      key: props.postSlug,
       transform(post){
+        post = post[0];
         return {
           title: post.title.rendered,
           content: post.content.rendered,
@@ -33,14 +22,6 @@ const {data: post} = await useFetch(
           featuredImage: post._embedded ? post._embedded['wp:featuredmedia'][0] : []
         }
       },
-      onResponse({request, response}){
-        if(!response.ok){
-          navigateTo({name: '404'});
-          //showError({statusCode: 404, statusMessage: 'Page Not Found'});
-        }
-      },
-      onResponseError(ctx){
-      }
     }
 );
 

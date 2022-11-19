@@ -6,7 +6,8 @@ const props = defineProps(['post']);
 
 // featuredImage
 const featuredImage = computed(() => props.post._embedded ? props.post._embedded['wp:featuredmedia'][0] : {});
-const link = computed(() => `/posts/${props.post.id}`);
+const link = computed(() => `/post/${props.post.slug}`);
+// todo: fix hard code /post
 </script>
 
 
