@@ -13,7 +13,6 @@ const formattedMenuItem = computed(() => {
     permalink: `/${slug}${postObject.value.post_name}`
   };
 });
-console.log(postObject)
 </script>
 
 
