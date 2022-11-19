@@ -5,10 +5,12 @@ export default defineEventHandler((event) => {
 
     if (id) {
         apiLink = `https://dev.mochisandbox.com/wordpress-vue/wp-json/wp/v2/pages/${id}?_embed`;
+        return $fetch(apiLink);
     }
     if (slug) {
-        apiLink = `https://dev.mochisandbox.com/wordpress-vue/wp-json/wp/v2/pages/?slug=${slug}`;
+        apiLink = `https://dev.mochisandbox.com/wordpress-vue/wp-json/wp/v2/pages/?slug=${slug}&_embed`;
+        return $fetch(apiLink);
     }
 
-    return $fetch(apiLink);
+
 });
