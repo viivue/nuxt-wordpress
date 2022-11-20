@@ -18,7 +18,7 @@ const formattedMenuItem = computed(() => {
 
 <template>
   <li>
-    <nuxt-link :to="formattedMenuItem.permalink">{{ formattedMenuItem.title }}</nuxt-link>
+    <nuxt-link :to="formattedMenuItem.permalink" class="btn">{{ formattedMenuItem.title }}</nuxt-link>
   </li>
 </template>
 

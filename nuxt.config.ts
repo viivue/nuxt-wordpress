@@ -39,6 +39,7 @@ export default defineNuxtConfig({
      * https://nuxtjs.org/docs/configuration-glossary/configuration-css
      */
     css: [
+        'honcau',
         '@viivue/atomic-css',
         '@/assets/css/fonts.css',
         '@/assets/css/style.scss',
