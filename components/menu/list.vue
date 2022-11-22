@@ -11,7 +11,7 @@ const menu_final = computed(() => {
   if(props.parentId){
     return {
       ...result,
-      items: result.items.filter(e => parseInt(e.parent_id) === parseInt(props.parentId))
+      filtered: result.items.filter(e => parseInt(e.parent_id) === parseInt(props.parentId))
     };
   }
 
@@ -23,13 +23,12 @@ const menu_final = computed(() => {
 
   <div v-if="!menu_final.ok"><strong>{{ menu_final.message }}</strong></div>
 
-
   <ul v-if="menu_final.ok && !parentId" class="d-flex fw-wrap" style="gap:40px; list-style:none;">
     <MenuItem v-for="item in menu_final.items" :item="item" :menu="menu_final"/>
   </ul>
 
-  <ul v-if="menu_final.ok && parentId" class="submenu" style="gap:40px; list-style:none;">
-    <MenuItem v-if="parentId" v-for="item in menu_final.items" :item="item" :parentId="parentId" :menu="menu_final"/>
+  <ul v-if="menu_final.ok && parentId" class="submenu">
+    <MenuItem v-for="item in menu_final.filtered" :item="item" :menu="menu_final" :parentId="parentId"/>
   </ul>
 
 
