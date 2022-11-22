@@ -28,9 +28,8 @@ const menu_final = computed(() => {
     <MenuItem v-for="item in menu_final.items" :item="item" :menu="menu_final"/>
   </ul>
 
-
   <ul v-if="menu_final.ok && parentId" class="submenu" style="gap:40px; list-style:none;">
-    <MenuItem v-if="parentId" v-for="item in menu_final.items" :item="item" :parentId="parentId"/>
+    <MenuItem v-if="parentId" v-for="item in menu_final.items" :item="item" :parentId="parentId" :menu="menu_final"/>
   </ul>
 
 
