@@ -1,27 +1,14 @@
-<script setup>/**
- * Component <MenuItem :item="item"/>
+<script setup>
+/**
+ * Component <MenuItem :item="item" :menu="menu" :parentId="parentId"/>
  */
-const props = defineProps(['item']);
-
-const {data: postObject} = await useFetch(`/api/post-type?id=${props.item.object_id}`, {key: props.item.object_id});
-
-const formattedMenuItem = computed(() => {
-  const slug = postObject.value.post_type === 'page' ? '' : `${postObject.value.post_type}/`;
-
-  return {
-    ...props.item,
-    permalink: `/${slug}${postObject.value.post_name}`
-  };
-});
+const props = defineProps(['item', 'menu', 'parentId']);
 </script>
 
-
 <template>
-  <li>
-    <nuxt-link :to="formattedMenuItem.permalink" class="btn">{{ formattedMenuItem.title }}</nuxt-link>
+  <li v-if="!item.is_child || parentId">
+    <nuxt-link :to="item.url">{{ item.title }}</nuxt-link>
+
+    <MenuList v-if="item.is_parent" :menu="menu" :parentId="item.id"/>
   </li>
 </template>
-
-<style scoped>
-
-</style>
