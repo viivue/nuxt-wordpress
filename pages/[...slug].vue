@@ -6,18 +6,13 @@
  * /post_type => cpt archive
  * /post_type/post_name => cpt single
  */
-import {getPathValueFromSlugArray, getPostTypeFromSlugArray} from "../utils/helpers";
-
 const route = useRoute();
 const pageSlug = route.params.slug;
 
-const siteInfo = useState("siteInfo");
-const postType = getPostTypeFromSlugArray(pageSlug);
-const pathValue = getPathValueFromSlugArray(pageSlug);
-const path = pageSlug.join('/');
-const apiRequest = `/api/post?slug=${pathValue}&post_type=${postType}`;
+const apiRequest = `/api/post?slug=${pageSlug.join(',')}`;
+const key = pageSlug.join('/');
 
-const {data: pageObject} = await useFetch(apiRequest, {key: path});
+const {data: pageObject} = await useFetch(apiRequest, {key: key});
 </script>
 
 <template>
