@@ -1,7 +1,7 @@
 <script setup>
 const siteInfo = useState('siteInfo');
 
-const pageId = siteInfo.value.front_page_id + '';
+const pageId = siteInfo.value.page_404_id + '';
 const apiRequest = `/api/post?id=${pageId}`;
 
 const {data: pageObject} = await useFetch(apiRequest, {key: pageId});

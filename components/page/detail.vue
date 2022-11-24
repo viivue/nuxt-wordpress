@@ -9,7 +9,7 @@ const props = defineProps(['object']);
 
 
 // Navigate to 404
-if(!props.object) navigateTo({name: '404-page'});
+if(!props.object || props.object.ok === false) navigateTo({name: 'oops'});
 
 // head
 useHead({
