@@ -1,15 +1,8 @@
 <script setup>
 const siteInfo = useState("siteInfo");
+const acfOptions = useState("acfOptions");
 </script>
 
 <template>
-  <div class="site-footer ta-center">
-    ViiVue | {{ siteInfo.name }} | {{ siteInfo.description }}
-  </div>
+  <footer v-html="acfOptions.footer_content"></footer>
 </template>
-
-<style scoped>
-.site-footer {
-  padding:20px;
-}
-</style>

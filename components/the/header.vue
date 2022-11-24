@@ -7,6 +7,7 @@
 
     <TheLogo/>
     <br>
+    <MenuList :location="'top-menu'"/>
     <MenuList :location="'main-menu'"/>
 
   </div>

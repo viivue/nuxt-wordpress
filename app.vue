@@ -1,7 +1,9 @@
 <script setup>
 const {data: siteInfo} = await useFetch('/api/site-info');
+const {data: acfOptions} = await useFetch('/api/acf-options');
 
 useState("siteInfo", () => siteInfo.value);
+useState("acfOptions", () => acfOptions.value);
 
 useHead({
   // as a string,
