@@ -1,14 +1,12 @@
 export default defineEventHandler((event) => {
+    const runtimeConfig = useRuntimeConfig();
     const {id, slug} = getQuery(event);
 
-    let apiLink = `https://dev.mochisandbox.com/wordpress-vue/wp-json/wp/v2/posts?_embed`;
-
     if (id) {
-        apiLink = `https://vinzan.mochisandbox.com/eevee/eevee/v1/post/id=${id}`;
-    }
-    if (slug) {
-        apiLink = `https://vinzan.mochisandbox.com/eevee/eevee/v1/post/slug=${slug}`;
+        return $fetch(`${runtimeConfig.apiURL}/post/id=${id}`);
     }
 
-    return $fetch(apiLink);
+    if (slug) {
+        return $fetch(`${runtimeConfig.apiURL}/post/slug=${slug}`);
+    }
 });

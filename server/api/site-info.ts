@@ -1,3 +1,5 @@
 export default defineEventHandler((event) => {
-    return $fetch(`https://vinzan.mochisandbox.com/eevee/eevee/v1/info`);
+    const runtimeConfig = useRuntimeConfig();
+
+    return $fetch(`${runtimeConfig.apiURL}/info`);
 });
