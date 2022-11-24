@@ -13,20 +13,15 @@ const apiRequest = `/api/post?slug=${pageSlug.join(',')}`;
 const key = pageSlug.join('/');
 
 const {data: pageObject} = await useFetch(apiRequest, {key: key});
-
-// head
-useHead({
-  title: pageObject.value.title
-});
 </script>
 
 <template>
   <div>
-    <!--    <div>pageSlug: {{ pageSlug }}</div>-->
-    <!--    <pre>{{ apiRequest }}</pre>-->
-    <pre>{{ pageObject }}</pre>
-    <!--    <PageDetail :pageSlug="pageSlug"/>-->
 
-    <div v-html="pageObject.content"></div>
+    <PageDetail :object="pageObject"/>
+
+    <pre>{{ apiRequest }}</pre>
+    <pre>{{ pageObject }}</pre>
+
   </div>
 </template>

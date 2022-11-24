@@ -2,42 +2,22 @@
 /**
  * Component: <PageDetail/>
  */
-import {navigateTo, useFetch, useHead} from "nuxt/app";
-import {strippedHtml} from "../../utils/helpers";
+import {useHead} from "nuxt/app";
 
 // props
-const props = defineProps(['pageSlug', 'pageId']);
+const props = defineProps(['object']);
 
-const requestURL = props.pageId ? `id=${props.pageId}` : `slug=${props.pageSlug}`;
-
-// fetch
-const {data: page} = await useFetch(
-    `/api/page?${requestURL}`,
-    {
-      key: `${props.pageId}-${props.pageSlug}`,
-      transform(page){
-        page = !!page.id === false ? page[0] : page;
-
-        return {
-          title: page.title.rendered,
-          content: page.content.rendered,
-          excerpt: strippedHtml(page.excerpt.rendered),
-          featuredImage: !!page._embedded['wp:featuredmedia'] === false ? false : page._embedded['wp:featuredmedia'][0]
-        }
-      },
-    }
-);
 
 // Navigate to 404
-if(!page.value) navigateTo({name: '404-page'});
+//if(!props.object) navigateTo({name: '404-object'});
 
 // head
 useHead({
-  title: page.value.title,
+  title: props.object.title_seo,
   meta: [
-    {name: 'description', content: page.value.excerpt},
-    {property: 'og:description', content: page.value.excerpt},
-    {property: 'og:image', content: page.value.featuredImage.source_url},
+    {name: 'description', content: props.object.excerpt},
+    {property: 'og:description', content: props.object.excerpt},
+    {property: 'og:image', content: props.object.featured_image.src},
     {name: "twitter:card", content: 'summary_large_image'}
   ]
 });
@@ -46,17 +26,20 @@ useHead({
 <template>
   <div>
 
-    <div v-if="page!==null">
-      <h1 v-if="page.title">
-        <span>{{ page.title }}</span>
+    <div v-if="object!==null">
+      <h1>
+        <span>{{ object.title }}</span>
       </h1>
 
-      <img v-if="page.featuredImage"
-           class="d-block w100 of-cover ar-169 thumbnail skeleton-bg"
-           :src="page.featuredImage.source_url"
-           :alt="page.featuredImage.title.rendered"/>
+      <img v-if="object.featured_image"
+           class="d-block w100 skeleton-bg"
+           :src="object.featured_image.src"
+           :srcset="object.featured_image.srcset"
+           :width="object.featured_image.width"
+           :height="object.featured_image.height"
+           :alt="object.featured_image.title"/>
 
-      <div v-if="page.content" v-html="page.content"></div>
+      <div v-if="object.content" v-html="object.content"></div>
 
     </div>
   </div>

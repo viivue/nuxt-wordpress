@@ -15,7 +15,7 @@ useHead({
     {rel: 'icon', type: 'image/x-icon', href: siteInfo.value.favicon}
   ]
 });
-console.table(siteInfo.value)
+//console.table(siteInfo.value)
 </script>
 
 <template>
