@@ -15,6 +15,10 @@ useHead({
 
   link: [
     {rel: 'icon', type: 'image/x-icon', href: siteInfo.value.favicon}
+  ],
+
+  meta: [
+    {name: "twitter:card", content: 'summary_large_image'}
   ]
 });
 //console.table(siteInfo.value)

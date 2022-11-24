@@ -4,6 +4,8 @@
  */
 import {useHead} from "nuxt/app";
 
+const acfOptions = useState("acfOptions");
+
 // props
 const props = defineProps(['object']);
 
@@ -18,7 +20,6 @@ useHead({
     {name: 'description', content: props.object.excerpt},
     {property: 'og:description', content: props.object.excerpt},
     {property: 'og:image', content: props.object.featured_image.src},
-    {name: "twitter:card", content: 'summary_large_image'}
   ]
 });
 </script>
