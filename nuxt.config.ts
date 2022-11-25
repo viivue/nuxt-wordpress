@@ -1,7 +1,7 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
     //components: true,
-    //ssr: false,
+    ssr: false,
 
     runtimeConfig: {
         // The private keys which are only available server-side
@@ -28,7 +28,7 @@ export default defineNuxtConfig({
             ]
         },
 
-        //baseURL: '/',
+        baseURL: '/nuxtwp',
 
         // https://nuxt.com/docs/getting-started/transitions
         pageTransition: {name: 'page', mode: 'out-in'},
