@@ -3,6 +3,7 @@
  * Component: <PageDetail/>
  */
 import {useHead} from "nuxt/app";
+import {createNode, parseString, strippedHtml} from "../../utils/helpers";
 
 const acfOptions = useState("acfOptions");
 
@@ -22,26 +23,37 @@ useHead({
     {property: 'og:image', content: props.object.featured_image.src},
   ]
 });
+
+let shortcode = props.object.content_raw
+    .replaceAll('[', '<')
+    .replaceAll(']', '>')
+    .replaceAll('twc_', '')
+    .replaceAll('twc-', '')
+    .trim();
+const endString = parseString(shortcode);
+const Node = createNode(endString);
+
 </script>
 
 <template>
-  <div>
+  <!--  <div>-->
 
-    <div v-if="object!==null">
-      <h1>
-        <span>{{ object.title }}</span>
-      </h1>
+  <!--    <div v-if="object!==null">-->
+  <!--      <h1>-->
+  <!--        <span>{{ object.title }}</span>-->
+  <!--      </h1>-->
 
-      <img v-if="object.featured_image"
-           class="d-block w100 skeleton-bg"
-           :src="object.featured_image.src"
-           :srcset="object.featured_image.srcset"
-           :width="object.featured_image.width"
-           :height="object.featured_image.height"
-           :alt="object.featured_image.title"/>
+  <!--      <img v-if="object.featured_image"-->
+  <!--           class="d-block w100 skeleton-bg"-->
+  <!--           :src="object.featured_image.src"-->
+  <!--           :srcset="object.featured_image.srcset"-->
+  <!--           :width="object.featured_image.width"-->
+  <!--           :height="object.featured_image.height"-->
+  <!--           :alt="object.featured_image.title"/>-->
 
-      <div v-if="object.content" v-html="object.content"></div>
+  <!--      <div v-if="object.content" v-html="object.content"></div>-->
 
-    </div>
-  </div>
+  <!--    </div>-->
+  <!--  </div>-->
+  <Node/>
 </template>

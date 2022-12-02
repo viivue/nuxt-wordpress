@@ -53,4 +53,12 @@ export default defineNuxtConfig({
     modules: [
         //'@pinia/nuxt'
     ],
+
+    /**
+     * Global Components
+     */
+    components: {
+        global: true,
+        dirs: ['~/components'],
+    },
 });
