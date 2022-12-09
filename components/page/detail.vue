@@ -3,13 +3,12 @@
  * Component: <PageDetail/>
  */
 import {useHead} from "nuxt/app";
-import {createNode, parseString, strippedHtml} from "../../utils/helpers";
+import {parseString} from "../../utils/helpers";
 
 const acfOptions = useState("acfOptions");
 
 // props
 const props = defineProps(['object']);
-
 
 // Navigate to 404
 if(!props.object || props.object.ok === false) navigateTo({name: 'oops'});
@@ -24,15 +23,9 @@ useHead({
   ]
 });
 
-let shortcode = props.object.content_raw
-    .replaceAll('[', '<')
-    .replaceAll(']', '>')
-    .replaceAll('twc_', '')
-    .replaceAll('twc-', '')
-    .trim();
-const endString = parseString(shortcode);
-const Node = createNode(endString);
-
+const shortCode = props.object.content_raw;
+const finish = parseString(shortCode);
+console.log(finish);
 </script>
 
 <template>
@@ -55,5 +48,4 @@ const Node = createNode(endString);
 
   <!--    </div>-->
   <!--  </div>-->
-  <Node/>
 </template>
