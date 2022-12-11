@@ -3,7 +3,7 @@
  * Component: <PageDetail/>
  */
 import {useHead} from "nuxt/app";
-import {parseString} from "../../utils/helpers";
+import {createNode} from "../../utils/helpers";
 
 const acfOptions = useState("acfOptions");
 
@@ -23,29 +23,28 @@ useHead({
   ]
 });
 
-const shortCode = props.object.content_raw;
-const finish = parseString(shortCode);
-console.log(finish);
+const shortCode = props.object.content_vue;
+const TheContent = createNode(shortCode);
 </script>
 
 <template>
-  <!--  <div>-->
+  <div>
 
-  <!--    <div v-if="object!==null">-->
-  <!--      <h1>-->
-  <!--        <span>{{ object.title }}</span>-->
-  <!--      </h1>-->
+    <div v-if="object!==null">
+      <h1>
+        <span>{{ object.title }}</span>
+      </h1>
 
-  <!--      <img v-if="object.featured_image"-->
-  <!--           class="d-block w100 skeleton-bg"-->
-  <!--           :src="object.featured_image.src"-->
-  <!--           :srcset="object.featured_image.srcset"-->
-  <!--           :width="object.featured_image.width"-->
-  <!--           :height="object.featured_image.height"-->
-  <!--           :alt="object.featured_image.title"/>-->
+      <img v-if="object.featured_image"
+           class="d-block w100 skeleton-bg"
+           :src="object.featured_image.src"
+           :srcset="object.featured_image.srcset"
+           :width="object.featured_image.width"
+           :height="object.featured_image.height"
+           :alt="object.featured_image.title"/>
 
-  <!--      <div v-if="object.content" v-html="object.content"></div>-->
+      <TheContent/>
 
-  <!--    </div>-->
-  <!--  </div>-->
+    </div>
+  </div>
 </template>

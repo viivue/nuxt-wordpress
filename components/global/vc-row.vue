@@ -1,6 +1,6 @@
-<template>
+<template class="vc-row">
   <div class="vc-row">
-    <slot></slot>
+    <slot/>
   </div>
 </template>
 

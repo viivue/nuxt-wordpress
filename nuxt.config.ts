@@ -57,8 +57,8 @@ export default defineNuxtConfig({
     /**
      * Global Components
      */
-    components: {
-        global: true,
-        dirs: ['~/components'],
-    },
+    // components: {
+    //     global: true,
+    //     dirs: ['~/components'],
+    // },
 });

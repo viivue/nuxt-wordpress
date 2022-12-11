@@ -12,7 +12,10 @@ export function strippedHtml(string){
  * */
 import {compile} from 'vue/dist/vue.esm-bundler';
 
-export const createNode = (shortcode) => () => h(compile(shortcode));
+export const createNode = (shortcode) => {
+    console.log(shortcode)
+    return h(compile(shortcode));
+}
 
 
 /**
